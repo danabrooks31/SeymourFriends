@@ -3,8 +3,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { About } from './pages/About';
 import  Board  from './pages/Board';
-import  Volunteer  from './pages/Volunteer';
-
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -20,13 +19,13 @@ function App() {
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>Edit <code>src/App.js</code> and save to reload.</p>
               </header>
+              <Navbar/>
             </div>
           }
         />
 
         <Route path="/about" element={<About />} />
         <Route path="/board" element={<Board/>}/>
-        <Route path="/volunteer" element={<Volunteer/>}/>
 
 
       </Routes>
