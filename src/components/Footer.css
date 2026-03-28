@@ -1,0 +1,32 @@
+.main-footer {
+  background-color: #000080;
+  color: white;
+  padding: 20px 0;
+  bottom: 0; 
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left; 
+  padding: 120px 0;
+  margin-left: 150px; 
+}
+
+.head {
+  padding-bottom: 20px;
+}
+
+.footer-map {
+  padding: 100px 0;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
