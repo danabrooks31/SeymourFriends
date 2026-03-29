@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function About() {
+export default function CarDonation() {
   return (
     <main id="main-content">
-      <h1>About</h1>
+      <h1>Car donation</h1>
     </main>
   )
 }

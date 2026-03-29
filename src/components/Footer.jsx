@@ -1,7 +1,7 @@
 import React from 'react';
+import { Container, Row, Col, Stack, Image, Nav, NavLink } from 'react-bootstrap';
 import MapFooter from './MapFooter';
 import './Footer.css'; 
-import { Container, Row, Col, Stack, Image, Nav, NavLink } from 'react-bootstrap';
 
 function Footer() {
   return (
@@ -17,7 +17,7 @@ function Footer() {
                     </Stack>
                 </Col>
                 <Col className = "footer-map">
-                    <MapFooter /> 
+                    <MapFooter />
                 </Col>
             </Row>
         </Container>
@@ -25,4 +25,4 @@ function Footer() {
   )
 }
 
-export default Footer; 
+export default Footer

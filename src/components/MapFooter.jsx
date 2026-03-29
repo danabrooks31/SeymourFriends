@@ -17,4 +17,4 @@ const MapFooter=()=>{
     ); 
 };
 
-export default MapFooter;
+export default MapFooter
