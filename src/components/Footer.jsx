@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Stack, Image, Nav, NavLink } from 'react-bootstrap';
+import { Container, Row, Col, Stack } from 'react-bootstrap';
 import MapFooter from './MapFooter';
 import './Footer.css'; 
 
