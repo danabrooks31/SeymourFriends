@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Donate() {
+export default function Support() {
   return (
     <main id="main-content">
-      <h1>Donate</h1>
+      <h1>Support</h1>
     </main>
   )
 }
