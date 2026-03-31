@@ -139,7 +139,7 @@ export default function About() {
               us to be added.
             </p>
             <a
-              href="" // TODO: add link to travel group
+              href="mailto:seymourfriends@gmail.com?subject=Travel%20Group%20Mailing%20List"
               className="about-travel-btn"
             >
               Contact the Travel Group →
