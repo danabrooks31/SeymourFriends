@@ -147,6 +147,48 @@ nav a.active {
   text-underline-offset: 3px;
 }
 
+/* Stand out CTA — Donate */
+nav a.nav-donate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--color-accent);
+  border-radius: var(--radius);
+  border: 2px solid var(--color-accent);
+  box-shadow: var(--shadow-sm), 0 3px 12px rgba(0, 0, 128, 0.28);
+  text-decoration: none;
+  transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+nav a.nav-donate:hover {
+  color: #ffffff;
+  text-decoration: none;
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm), 0 5px 16px rgba(0, 0, 128, 0.32);
+}
+
+nav a.nav-donate:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+nav a.nav-donate.nav-donate--active,
+nav a.nav-donate.active {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-accent),
+    0 4px 14px rgba(0, 0, 128, 0.3);
+}
+
 /* Page content (About, Board, etc.) */
 main,
 [role="main"] {

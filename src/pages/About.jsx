@@ -4,6 +4,27 @@ import "react-multi-carousel/lib/styles.css";
 import "./About.css";
 import flowers from "../photos/flowers.png";
 import centerBuilding from "../photos/center-building.png";
+import charlestonFlyer from "../photos/CHARLESTON.png";
+import portugalFlyer from "../photos/FOSC Portugal Social Media Post.png";
+
+/**
+ * Upcoming destinations — links under each name.
+ * Each link: { label, href } — href can be a URL, mailto:, or an imported asset.
+ */
+const UPCOMING_DESTINATIONS = [
+  {
+    name: "Charleston & Savannah",
+    links: [{ label: "View flyer", href: charlestonFlyer }],
+  },
+  {
+    name: "Portugal",
+    links: [{ label: "View flyer", href: portugalFlyer }],
+  },
+  {
+    name: "New York City",
+    links: [],
+  },
+];
 
 const SLIDES = [
   {
@@ -120,10 +141,42 @@ export default function About() {
           </p>
 
           <h3 className="about-subheading">Upcoming Destinations</h3>
-          <ul className="about-list">
-            <li>Charleston &amp; Savannah</li>
-            <li>Portugal</li>
-            <li>New York City</li>
+          <ul className="about-list about-travel-destinations">
+            {UPCOMING_DESTINATIONS.map((d) => {
+              const links = (d.links || []).filter(
+                (L) => L.href && String(L.href).trim()
+              );
+              return (
+                <li key={d.name}>
+                  <div className="about-destination-row">
+                    <span className="about-destination-name">{d.name}</span>
+                    {links.length > 0 && (
+                      <span className="about-destination-links">
+                        {links.map((link) => {
+                          const isMailto = String(link.href).startsWith(
+                            "mailto:"
+                          );
+                          return (
+                            <a
+                              key={`${d.name}-${link.href}`}
+                              href={link.href}
+                              {...(!isMailto
+                                ? {
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                  }
+                                : {})}
+                            >
+                              {link.label || link.href}
+                            </a>
+                          );
+                        })}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="about-travel-card">

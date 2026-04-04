@@ -40,7 +40,14 @@ function Navbar() {
           <NavLink to="/support">Support</NavLink>
         </li>
         <li>
-          <NavLink to="/donate">Donate</NavLink>
+          <NavLink
+            to="/donate"
+            className={({ isActive }) =>
+              isActive ? 'nav-donate nav-donate--active' : 'nav-donate'
+            }
+          >
+            Donate
+          </NavLink>
         </li>
       </ul>
     </nav>

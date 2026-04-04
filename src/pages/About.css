@@ -165,6 +165,46 @@ h3 {
   flex-shrink: 0;
 }
 
+.about-travel-destinations li {
+  margin-bottom: 1.1rem;
+}
+
+.about-travel-destinations li:last-child {
+  margin-bottom: 0.5rem;
+}
+
+.about-destination-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+}
+
+.about-destination-name {
+  display: inline;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.about-destination-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1.15rem;
+}
+
+.about-destination-links a {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.about-destination-links a:hover {
+  text-decoration: underline;
+}
+
 .about-travel-card {
   margin-top: 1.75rem;
   padding: 1.5rem 1.75rem;
