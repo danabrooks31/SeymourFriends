@@ -1,0 +1,58 @@
+main {
+    width: 100%; 
+}
+
+.support h1{
+    color: #000080; 
+    margin-bottom: 30px;
+}
+
+.list1 {
+    color: #000080;
+}
+
+.list2 {
+    color: #000080;
+}
+
+.list3 {
+    color: #000080;
+}
+
+.list4 {
+    color: #000080;
+}
+
+.list5 {
+    color: #000080;
+}
+
+.list6 {
+    color: #000080;
+}
+
+.donation-header {
+  color: #000080;
+  background-color: #f2f2f2;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 40px 0;
+}
+
+p {
+    color: #000; 
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.donation-content {
+  padding-top: 20px;
+}
+
+.donation-content li {
+  margin-bottom: 25px;
+}
