@@ -31,62 +31,6 @@
   color: var(--color-text);
 }
 
-/* Home / landing */
-.App-header {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(2rem, 6vw, 4rem) 1.25rem;
-  background: linear-gradient(165deg, #f8f9fb 0%, var(--color-bg) 50%, #fafafa 100%);
-  color: var(--color-text);
-  min-height: min(70vh, 32rem);
-}
-
-.App-header p {
-  margin: 0.75rem 0 0;
-  font-size: 1.05rem;
-  color: var(--color-text-muted);
-  max-width: 28rem;
-  text-align: center;
-  line-height: 1.55;
-}
-
-.App-logo {
-  height: clamp(4rem, 12vmin, 7rem);
-  width: auto;
-  margin-bottom: 1.25rem;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: app-logo-gentle 18s ease-in-out infinite;
-  }
-}
-
-@keyframes app-logo-gentle {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-.App-link {
-  color: var(--color-accent);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.App-link:hover {
-  color: var(--color-accent-hover);
-}
-
 /* Navigation */
 nav {
   position: sticky;
@@ -201,6 +145,48 @@ nav a.active {
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* Stand out CTA — Donate */
+nav a.nav-donate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--color-accent);
+  border-radius: var(--radius);
+  border: 2px solid var(--color-accent);
+  box-shadow: var(--shadow-sm), 0 3px 12px rgba(0, 0, 128, 0.28);
+  text-decoration: none;
+  transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+nav a.nav-donate:hover {
+  color: #ffffff;
+  text-decoration: none;
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm), 0 5px 16px rgba(0, 0, 128, 0.32);
+}
+
+nav a.nav-donate:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+nav a.nav-donate.nav-donate--active,
+nav a.nav-donate.active {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-accent),
+    0 4px 14px rgba(0, 0, 128, 0.3);
 }
 
 /* Page content (About, Board, etc.) */
