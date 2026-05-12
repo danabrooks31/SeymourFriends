@@ -14,12 +14,17 @@
     "react-multi-carousel": "^2.8.6",
     "react-router-dom": "^7.13.0",
     "react-scripts": "5.0.1",
+    "@sanity/client": "^6.24.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "studio": "npm --prefix studio-seymour run dev",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,5 +44,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^react-router-dom$": "<rootDir>/node_modules/react-router-dom/dist/index.js",
+      "^react-router$": "<rootDir>/node_modules/react-router/dist/development/index.js",
+      "^react-router/dom$": "<rootDir>/node_modules/react-router/dist/development/dom-export.js"
+    }
   }
 }

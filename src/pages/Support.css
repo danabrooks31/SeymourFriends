@@ -2,10 +2,6 @@ main {
     width: 100%; 
 }
 
-.support h1{
-    margin-bottom: 30px;
-}
-
 .list1 {
     color: #000080;
 }
@@ -28,14 +24,6 @@ main {
 
 .list6 {
     color: #000080;
-}
-
-.donation-header {
-  color: #000080;
-  background-color: #f2f2f2;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding: 40px 0;
 }
 
 p {

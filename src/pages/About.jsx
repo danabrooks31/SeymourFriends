@@ -1,11 +1,17 @@
 // About.jsx
+import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "./Board.css";
 import "./About.css";
 import flowers from "../photos/flowers.png";
 import centerBuilding from "../photos/center-building.png";
 import charlestonFlyer from "../photos/CHARLESTON.png";
 import portugalFlyer from "../photos/FOSC Portugal Social Media Post.png";
+import { getSanityClient } from "../lib/sanityClient";
+
+const WHO_WE_ARE_FALLBACK =
+  "The Seymour Friends is an all-volunteer, non-profit organization dedicated to supporting the high quality of events, activities, programs, and wellness opportunities for seniors offered at the Center.";
 
 /**
  * Upcoming destinations — links under each name.
@@ -87,10 +93,36 @@ function ImageCarousel() {
 
 
 export default function About() {
+  const [whoWeAre, setWhoWeAre] = useState(WHO_WE_ARE_FALLBACK);
+
+  useEffect(() => {
+    const client = getSanityClient();
+    if (!client) return;
+
+    const query = `*[_type == "aboutPage"][0]{ "text": whoWeAre }`;
+
+    let cancelled = false;
+    client
+      .fetch(query)
+      .then((doc) => {
+        if (cancelled || !doc?.text || !String(doc.text).trim()) return;
+        setWhoWeAre(String(doc.text).trim());
+      })
+      .catch(() => {
+        /* keep fallback */
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <>
-      <main>
-        <h1 className="about-title">About the Friends</h1>
+      <main id="main-content">
+        <header className="board-hero" aria-labelledby="about-heading">
+          <h1 id="about-heading">About the Friends</h1>
+        </header>
 
         <section className="about-carousel-section">
           <ImageCarousel />
@@ -98,12 +130,7 @@ export default function About() {
 
         <section className="about-intro">
           <h2>Who We Are</h2>
-          <p>
-            The Seymour Friends is an all-volunteer, non-profit organization
-            dedicated to supporting the high quality of events, activities,
-            programs, and wellness opportunities for seniors offered at the
-            Center.
-          </p>
+          <p>{whoWeAre}</p>
         </section>
 
         <section className="about-mission">

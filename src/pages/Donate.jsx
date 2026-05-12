@@ -1,4 +1,5 @@
 import React from 'react'
+import './Board.css'
 import './Donate.css'
 
 const PAYPAL_DONATE_URL =
@@ -7,7 +8,9 @@ const PAYPAL_DONATE_URL =
 export default function Donate() {
   return (
     <main id="main-content" className="donate-page">
-      <h1>Donate</h1>
+      <header className="board-hero" aria-labelledby="donate-heading">
+        <h1 id="donate-heading">Donate</h1>
+      </header>
       <p className="donate-lead">
         Your gift helps the Friends of the Robert and Pearl Seymour Center
         support programs, activities, and wellness opportunities for older

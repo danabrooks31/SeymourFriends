@@ -1,12 +1,13 @@
 import React from 'react'
+import './Board.css'
 import './Support.css'
 
 export default function Support() {
   return (
-    <main id="main-content"> 
-      <div className="support">
-        <h1>Support</h1>
-      </div>
+    <main id="main-content">
+      <header className="board-hero" aria-labelledby="support-heading">
+        <h1 id="support-heading">Support</h1>
+      </header>
 
       <div className="support-para">
         <p>
@@ -17,11 +18,11 @@ export default function Support() {
         </p>
       </div>
 
-       <section className="donation-header">
-        <div className="container">
-          <h2>Making a Donation is Easy! Here are ways how:</h2>
-        </div>
-      </section>
+      <header className="board-hero" aria-labelledby="donation-ways-heading">
+        <h2 id="donation-ways-heading">
+          Making a Donation is Easy! Here are ways how:
+        </h2>
+      </header>
 
       <section className="donation-content container">
       <ol>

@@ -1,12 +1,13 @@
 import React from 'react'
+import './Board.css'
 import './CarDonation.css'
 
 export default function CarDonation() {
   return (
     <main id="main-content">
-      <div className="donation-header">
-        <h1>Car Donation Program</h1>
-      </div>
+      <header className="board-hero" aria-labelledby="car-donation-heading">
+        <h1 id="car-donation-heading">Car Donation Program</h1>
+      </header>
       <div className="donation-header2">
         <h2>DONATE YOUR CAR TODAY!!</h2>
       </div>
