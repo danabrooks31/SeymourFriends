@@ -140,7 +140,7 @@ h3 {
   position: relative;
   padding-left: 1.6rem;
   margin-bottom: 0.5rem;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   line-height: 1.65;
 }
 
@@ -195,6 +195,22 @@ h3 {
 
 .about-destination-links a:hover {
   text-decoration: underline;
+}
+
+.about-travel-session-poster {
+  margin: 1rem 0 1.75rem;
+  padding: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 128, 0.12);
+  border: 1px solid var(--color-border);
+}
+
+.about-travel-session-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 .about-travel-card {

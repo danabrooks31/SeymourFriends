@@ -1,6 +1,7 @@
 import React from 'react'
 import './Board.css'
 import './Support.css'
+import remittanceFormPdf from '../photos/SeymourFriends_Remittance_Form.pdf'
 
 export default function Support() {
   return (
@@ -40,7 +41,15 @@ export default function Support() {
             <h3>Write a Check</h3>
           </div>
           <p>
-            To view our check remittance form, click <a href="https://drive.google.com/file/d/1rP0jpeWJTrw8L_7UWc-i_MzNj_vBl2W0/view?usp=sharing">here</a>. Please print the form, fill it out, and mail it along with your check.
+            To view our check remittance form, click{' '}
+            <a
+              href={remittanceFormPdf}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              here
+            </a>
+            . Please print the form, fill it out, and mail it along with your check.
           </p>
         </li>
 

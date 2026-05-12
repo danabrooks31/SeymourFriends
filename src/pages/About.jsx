@@ -6,8 +6,9 @@ import "./Board.css";
 import "./About.css";
 import flowers from "../photos/flowers.png";
 import centerBuilding from "../photos/center-building.png";
-import charlestonFlyer from "../photos/CHARLESTON.png";
-import portugalFlyer from "../photos/FOSC Portugal Social Media Post.png";
+import douroPortugalTripPdf from "../photos/douro-portugal-river-cruise-nov2026.pdf";
+import nycHolidayTripPdf from "../photos/nyc-holiday-dec2026.pdf";
+import travelInfoSessionPoster from "../photos/travel-info-session-june-2-2026.png";
 import { getSanityClient } from "../lib/sanityClient";
 
 const WHO_WE_ARE_FALLBACK =
@@ -19,16 +20,12 @@ const WHO_WE_ARE_FALLBACK =
  */
 const UPCOMING_DESTINATIONS = [
   {
-    name: "Charleston & Savannah",
-    links: [{ label: "View flyer", href: charlestonFlyer }],
+    name: "Portugal River Cruise - November 9-17, 2026",
+    links: [{ label: "View trip details (PDF)", href: douroPortugalTripPdf }],
   },
   {
-    name: "Portugal",
-    links: [{ label: "View flyer", href: portugalFlyer }],
-  },
-  {
-    name: "New York City",
-    links: [],
+    name: "New York City Holiday - December 11-15, 2026",
+    links: [{ label: "View trip details (PDF)", href: nycHolidayTripPdf }],
   },
 ];
 
@@ -40,8 +37,8 @@ const SLIDES = [
   },
   {
     src: centerBuilding,
-    alt: "Past project we've helped fund",
-    caption: "Past project we've helped fund.",
+    alt: "Robert and Pearl Seymour Center building",
+    caption: "We fund a wide range of opportunities at the Center.",
   },
 ];
 
@@ -136,35 +133,41 @@ export default function About() {
         <section className="about-mission">
           <h2>Our Mission</h2>
           <p>
-            The mission of the Friends of the Robert and Pearl Seymour Center is
-            to promote the well-being of all persons age 55 and older in Orange
-            County by supporting the effective use of the Seymour Center. To
-            accomplish this mission, the Board raises funds through independent
-            donations and other contributions to supplement the efforts of the
-            Orange County Department on Aging. Since 1991, the Seymour Friends
-            have raised thousands of donations and offered continuous support
-            for the various programs offered at the Seymour Center in Chapel
-            Hill. Donations are greatly appreciated to help us continue our
-            community efforts.
+            The Board raises funds through Individual and corporate donations, as
+            well as fundraising events, to supplement the efforts of the Seymour
+            Center.
+          </p>
+          <p>
+            Since 1991, the Seymour Friends have given thousands of dollars and
+            continuous support for various programs, events, and wellness
+            opportunities offered at the Center. Donations are greatly appreciated
+            to help us fulfill our mission.
           </p>
         </section>
 
         <section className="about-what-we-do">
           <h2>What We Do</h2>
           <ul className="about-list">
-            <li>Support the garden club to beautify the front entrances</li>
+            <li>
+              Support the Garden Club in beautifying the front entrance
+            </li>
             <li>Support the Wellness Center</li>
-            <li>90s tea</li>
-            <li>Holiday card mailout</li>
-            <li>Co-sponsors of a wellness fair</li>
+            <li>Host The 90&apos;s Afternoon Tea</li>
+            <li>Annual Holiday card mailout</li>
+            <li>Offer travel opportunities</li>
+            <li>Co-sponsor the Wellness Fair</li>
           </ul>
         </section>
 
         <section className="about-travel">
           <h2>Travel Opportunities</h2>
           <p>
-            We are offering exciting travel opportunities for our members and
-            community. If interested, feel free to reach out!
+            The Seymour Friends are offering travel opportunities for anyone who
+            enjoys traveling as a group. If interested, feel free to reach out at{" "}
+            <a href="mailto:seymourfriendstravel@gmail.com">
+              seymourfriendstravel@gmail.com
+            </a>
+            .
           </p>
 
           <h3 className="about-subheading">Upcoming Destinations</h3>
@@ -206,6 +209,23 @@ export default function About() {
             })}
           </ul>
 
+          <h3 className="about-subheading">Travel info session</h3>
+          <p>
+            The Friends will be hosting a Premier of both trips at the Seymour
+            Center on <strong>Tuesday, June 2nd at 5:00 p.m.</strong> It is free
+            and open to the public; no registration required.
+          </p>
+          <figure className="about-travel-session-poster">
+            <img
+              src={travelInfoSessionPoster}
+              alt="Travel with Friends of the Seymour Center: Douro Portugal river cruise November 9-17, 2026; NYC holiday December 11-15, 2026; info session Tuesday June 2 at 5:00 p.m."
+              width={1024}
+              height={575}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+
           <div className="about-travel-card">
             <h3 className="about-subheading">Seymour Friends Travel Group</h3>
             <p>
@@ -219,7 +239,7 @@ export default function About() {
               us to be added.
             </p>
             <a
-              href="mailto:seymourfriends@gmail.com?subject=Travel%20Group%20Mailing%20List"
+              href="mailto:seymourfriendstravel@gmail.com?subject=Travel%20Group%20Mailing%20List"
               className="about-travel-btn"
             >
               Contact the Travel Group →

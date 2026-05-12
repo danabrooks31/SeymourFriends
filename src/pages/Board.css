@@ -17,12 +17,12 @@
 
 .board-hero h1 {
   margin: 0;
-  color: var(--color-text);
+  color: var(--color-accent);
 }
 
 .board-hero h2 {
   margin: 0;
-  color: var(--color-text);
+  color: var(--color-accent);
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 3vw, 1.75rem);
   font-weight: 600;

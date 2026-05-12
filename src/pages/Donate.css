@@ -5,7 +5,7 @@
 .donate-lead {
   margin: 0 0 1.5rem;
   line-height: 1.65;
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .donate-paypal-link {
@@ -37,5 +37,5 @@
 .donate-note {
   margin: 1.25rem 0 0;
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
