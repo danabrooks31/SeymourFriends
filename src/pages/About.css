@@ -125,7 +125,7 @@ h3 {
   font-family: var(--font-display);
   font-size: clamp(1.05rem, 2.5vw, 1.2rem);
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-accent);
   margin: 1.5rem 0 0.5rem;
 }
 
@@ -157,29 +157,69 @@ h3 {
   flex-shrink: 0;
 }
 
-.about-travel-destinations li {
-  margin-bottom: 1.1rem;
-}
-
-.about-travel-destinations li:last-child {
-  margin-bottom: 0.5rem;
-}
-
-.about-destination-row {
+.about-travel-destinations {
+  list-style: none;
+  margin: 0 0 1rem 0;
+  padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.75rem;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-destination-card {
+  display: grid;
+  grid-template-columns: minmax(10rem, 14rem) 1fr;
+  gap: 1.15rem 1.35rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.about-destination-card:not(:has(.about-destination-preview)) {
+  grid-template-columns: 1fr;
+}
+
+.about-destination-preview {
+  display: block;
+  border-radius: calc(var(--radius) - 2px);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 128, 0.1);
+  align-self: start;
+}
+
+.about-destination-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-destination-body {
+  min-width: 0;
 }
 
 .about-destination-name {
-  display: inline;
-  color: var(--color-text);
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
   font-weight: 600;
+  color: var(--color-text);
+}
+
+.about-destination-subtitle {
+  margin: 0 0 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.about-destination-highlights {
+  margin-bottom: 0.85rem;
 }
 
 .about-destination-links {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.35rem 1.15rem;
@@ -197,20 +237,16 @@ h3 {
   text-decoration: underline;
 }
 
-.about-travel-session-poster {
-  margin: 1rem 0 1.75rem;
-  padding: 0;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 128, 0.12);
-  border: 1px solid var(--color-border);
-}
+@media (max-width: 40rem) {
+  .about-destination-card {
+    grid-template-columns: 1fr;
+    padding: 0.9rem;
+  }
 
-.about-travel-session-poster img {
-  display: block;
-  width: 100%;
-  height: auto;
-  vertical-align: middle;
+  .about-destination-preview {
+    max-width: 18rem;
+    margin: 0 auto;
+  }
 }
 
 .about-travel-card {

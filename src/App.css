@@ -4,10 +4,10 @@
 :root {
   --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
   --color-accent: #000080;
   --color-accent-hover: #000080;
+  --color-text: var(--color-accent);
+  --color-text-muted: #64748b;
   --color-border: #e2e8f0;
   --color-band-bg: #f2f2f2;
   --font-sans:  "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -34,6 +34,8 @@
 
 /* Navigation */
 nav {
+  --nav-bg: var(--color-accent);
+  --nav-fg: var(--color-band-bg);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -42,9 +44,11 @@ nav {
   align-items: center;
   justify-content: space-between;
   gap: 1.1rem;
+  width: 100%;
+  box-sizing: border-box;
   min-height: var(--nav-height);
-  padding: 0.55rem clamp(1rem, 4vw, 2rem);
-  background: var(--color-band-bg);
+  padding: 0.55rem clamp(0.75rem, 4vw, 2rem);
+  background: var(--nav-bg);
   border: 2px solid var(--color-accent);
   box-shadow: var(--shadow-sm);
 }
@@ -54,6 +58,7 @@ nav .nav-brand {
   align-items: center;
   gap: 0.75rem;
   margin: 0;
+  min-width: 0;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -73,17 +78,18 @@ nav .nav-brand-title-link {
   font-size: clamp(1.75rem, 4vw, 2.25rem);
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--color-accent);
+  color: var(--nav-fg);
   text-decoration: none;
 }
 
 nav .nav-logo-link:hover,
 nav .nav-brand-title-link:hover {
-  color: var(--color-accent-hover);
+  color: #ffffff;
 }
 
 nav .nav-brand-title {
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 nav .nav-logo-wrap {
@@ -122,12 +128,13 @@ nav ul {
   margin: 0 0 0 auto;
   padding: 0;
   list-style: none;
+  min-width: 0;
 }
 
 nav li {
   font-size: 1.02rem;
   font-weight: 500;
-  color: var(--color-accent);
+  color: var(--nav-fg);
 }
 
 nav a {
@@ -136,13 +143,13 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--color-accent);
+  color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 nav a.active {
-  color: var(--color-accent);
+  color: var(--nav-fg);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -158,36 +165,93 @@ nav a.nav-donate {
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #ffffff;
-  background: var(--color-accent);
+  color: var(--nav-bg);
+  background: var(--nav-fg);
   border-radius: var(--radius);
-  border: 2px solid var(--color-accent);
-  box-shadow: var(--shadow-sm), 0 3px 12px rgba(0, 0, 128, 0.28);
+  border: 2px solid var(--nav-fg);
+  box-shadow: var(--shadow-sm), 0 3px 12px rgba(242, 242, 242, 0.28);
   text-decoration: none;
   transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 nav a.nav-donate:hover {
-  color: #ffffff;
+  color: var(--nav-bg);
   text-decoration: none;
-  filter: brightness(1.1);
+  filter: brightness(1.08);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-sm), 0 5px 16px rgba(0, 0, 128, 0.32);
+  box-shadow: var(--shadow-sm), 0 5px 16px rgba(242, 242, 242, 0.4);
 }
 
 nav a.nav-donate:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--nav-fg);
   outline-offset: 3px;
 }
 
 nav a.nav-donate.nav-donate--active,
 nav a.nav-donate.active {
-  color: #ffffff;
+  color: var(--nav-bg);
   font-weight: 700;
   text-decoration: none;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-accent),
-    0 4px 14px rgba(0, 0, 128, 0.3);
+  background: var(--nav-fg);
+  box-shadow: 0 0 0 2px var(--nav-bg), 0 0 0 4px var(--nav-fg),
+    0 4px 14px rgba(242, 242, 242, 0.3);
+}
+
+@media (max-width: 60rem) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    min-height: 0;
+    padding: 0.5rem clamp(0.7rem, 3vw, 1.25rem) 0.65rem;
+  }
+
+  nav .nav-brand {
+    gap: 0.5rem;
+  }
+
+  nav .nav-logo-wrap {
+    width: 3.4rem;
+    height: 3.4rem;
+  }
+
+  nav .nav-brand-title-link {
+    font-size: clamp(1.3rem, 5vw, 1.75rem);
+  }
+
+  nav ul {
+    width: 100%;
+    margin: 0;
+    justify-content: flex-start;
+    gap: 0.15rem 0.9rem;
+  }
+
+  nav li {
+    font-size: 0.95rem;
+  }
+
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+  }
+
+  nav a.nav-donate {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 30rem) {
+  nav .nav-logo-wrap {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  nav ul {
+    gap: 0.1rem 0.7rem;
+  }
 }
 
 /* Page content (About, Board, etc.) */

@@ -53,7 +53,7 @@
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: 600;
   margin: 0 0 1rem;
-  color: var(--color-text);
+  color: var(--color-accent);
   letter-spacing: -0.02em;
 }
 

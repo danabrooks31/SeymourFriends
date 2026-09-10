@@ -2,28 +2,13 @@ main {
     width: 100%; 
 }
 
-.list1 {
-    color: #000080;
-}
-
-.list2 {
-    color: #000080;
-}
-
-.list3 {
-    color: #000080;
-}
-
-.list4 {
-    color: #000080;
-}
-
-.list5 {
-    color: #000080;
-}
-
+.list1,
+.list2,
+.list3,
+.list4,
+.list5,
 .list6 {
-    color: #000080;
+    color: var(--color-accent);
 }
 
 p {

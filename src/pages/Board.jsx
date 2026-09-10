@@ -1,80 +1,109 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import './Board.css'
+import { getSanityClient, BOARD_QUERY, mapSanityBoard } from '../lib/sanityClient'
+
+const BOARD_FALLBACK = {
+  asOf: 'As of August 2026',
+  officers: [
+    { role: 'President', name: 'Ceresa Clarke', since: 'Since 2019' },
+    { role: 'Vice President', name: 'Ann Wilkerson', since: 'Since 2019' },
+    {
+      role: 'Correspondence Secretary',
+      name: 'Joy Gattis',
+      since: 'Since 2019',
+    },
+    { role: 'Treasurer', name: 'Lewis Atwater', since: 'Since 2019' },
+  ],
+  directors: [
+    {
+      name: 'Keith Dodson',
+      note: 'Chapel Hill Parks & Rec Representative',
+    },
+    { name: 'Priya Kannan', note: '' },
+    { name: 'Gail Edwards', note: '' },
+    { name: 'Rosa Gonzales', note: 'Spanish Liaison' },
+    { name: 'Fung Little', note: 'Chinese Liaison' },
+    { name: 'Rose Ogu', note: '' },
+  ],
+}
 
 const Board = () => {
+  const [board, setBoard] = useState(BOARD_FALLBACK)
+
+  useEffect(() => {
+    const client = getSanityClient()
+    if (!client) return
+
+    let cancelled = false
+    client
+      .fetch(BOARD_QUERY)
+      .then((doc) => {
+        if (cancelled) return
+        const mapped = mapSanityBoard(doc)
+        if (mapped) {
+          setBoard({
+            ...mapped,
+            asOf: mapped.asOf || BOARD_FALLBACK.asOf,
+          })
+        }
+      })
+      .catch(() => {
+        /* keep fallback */
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <main className="page-board" id="main-content">
-        <header className="board-hero">
-          <h1>Board of Directors</h1>
-        </header>
+      <header className="board-hero">
+        <h1>Board of Directors</h1>
+      </header>
 
+      {board.officers.length > 0 && (
         <section
           className="board-section board-section--officers"
           aria-labelledby="officers-title"
         >
           <h2 id="officers-title">Officers</h2>
           <ul className="board-officers">
-            <li>
-              <span className="board-role">President</span>
-              <span className="board-name">Ceresa Clarke</span>
-              <span className="board-since">Since 2019</span>
-            </li>
-            <li>
-              <span className="board-role">Vice President</span>
-              <span className="board-name">Ann Wilkerson</span>
-              <span className="board-since">Since 2019</span>
-            </li>
-            <li>
-              <span className="board-role">Correspondence Secretary</span>
-              <span className="board-name">Joy Gattis</span>
-              <span className="board-since">Since 2019</span>
-            </li>
-            <li>
-              <span className="board-role">Treasurer</span>
-              <span className="board-name">Lewis Atwater</span>
-              <span className="board-since">Since 2019</span>
-            </li>
+            {board.officers.map((person) => (
+              <li key={`${person.role}-${person.name}`}>
+                <span className="board-role">{person.role}</span>
+                <span className="board-name">{person.name}</span>
+                {person.since && (
+                  <span className="board-since">{person.since}</span>
+                )}
+              </li>
+            ))}
           </ul>
         </section>
+      )}
 
+      {board.directors.length > 0 && (
         <section
           className="board-section board-section--directors"
           aria-labelledby="directors-title"
         >
           <h2 id="directors-title">Directors at Large</h2>
           <ul className="board-directors">
-            <li>
-              <span className="board-name">Keith Dodson</span>
-              <span className="board-director-note">
-                Chapel Hill Parks &amp; Rec Representative
-              </span>
-            </li>
-            <li>
-              <span className="board-name">Priya Kannan</span>
-            </li>
-            <li>
-              <span className="board-name">Gail Edwards</span>
-            </li>
-            <li>
-              <span className="board-name">Rosa Gonzales</span>
-              <span className="board-director-note">Spanish Liaison</span>
-            </li>
-            <li>
-              <span className="board-name">Fung Little</span>
-              <span className="board-director-note">Chinese Liaison</span>
-            </li>
-            <li>
-              <span className="board-name">Rose Ogu</span>
-            </li>
-            <li>
-              <span className="board-name">Sheila Evans</span>
-            </li>
+            {board.directors.map((person) => (
+              <li key={person.name}>
+                <span className="board-name">{person.name}</span>
+                {person.note && (
+                  <span className="board-director-note">{person.note}</span>
+                )}
+              </li>
+            ))}
           </ul>
         </section>
+      )}
 
-        <p className="board-as-of">As of March 2026</p>
+      {board.asOf && <p className="board-as-of">{board.asOf}</p>}
     </main>
   )
 }
 
-export default Board 
+export default Board

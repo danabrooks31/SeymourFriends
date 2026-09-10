@@ -8,24 +8,45 @@ import flowers from "../photos/flowers.png";
 import centerBuilding from "../photos/center-building.png";
 import douroPortugalTripPdf from "../photos/douro-portugal-river-cruise-nov2026.pdf";
 import nycHolidayTripPdf from "../photos/nyc-holiday-dec2026.pdf";
-import travelInfoSessionPoster from "../photos/travel-info-session-june-2-2026.png";
-import { getSanityClient } from "../lib/sanityClient";
+import douroPortugalTripPreview from "../photos/douro-portugal-trip-preview.jpg";
+import nycHolidayTripPreview from "../photos/nyc-holiday-trip-preview.jpg";
+import { getSanityClient, TRIPS_QUERY, mapSanityTrips } from "../lib/sanityClient";
 
 const WHO_WE_ARE_FALLBACK =
   "The Seymour Friends is an all-volunteer, non-profit organization dedicated to supporting the high quality of events, activities, programs, and wellness opportunities for seniors offered at the Center.";
 
 /**
- * Upcoming destinations — links under each name.
+ * Upcoming destinations — flyer preview plus highlights from the trip PDFs.
  * Each link: { label, href } — href can be a URL, mailto:, or an imported asset.
  */
 const UPCOMING_DESTINATIONS = [
   {
     name: "Portugal River Cruise - November 9-17, 2026",
-    links: [{ label: "View trip details (PDF)", href: douroPortugalTripPdf }],
+    subtitle:
+      "Highlights of the Douro with Spain — 9 days, 7 nights aboard the new Riviera Rose",
+    preview: douroPortugalTripPreview,
+    previewAlt:
+      "Trip flyer cover for Highlights of the Douro with Spain, November 9, 2026",
+    highlights: [
+      "Roundtrip airfare from RDU",
+      "Exclusive charter on the MS Riviera Rose",
+      "Porto, Douro Valley wine estates, Salamanca with flamenco, and Mateus Palace Gardens",
+      "20 meals and drinks onboard included",
+    ],
+    links: [{ label: "View full trip details (PDF)", href: douroPortugalTripPdf }],
   },
   {
     name: "New York City Holiday - December 11-15, 2026",
-    links: [{ label: "View trip details (PDF)", href: nycHolidayTripPdf }],
+    subtitle: "5 days in Manhattan with Broadway, the Rockettes, and holiday lights",
+    preview: nycHolidayTripPreview,
+    previewAlt:
+      "Trip flyer cover for New York City Holiday, December 11, 2026",
+    highlights: [
+      "Roundtrip airfare from RDU and 4 nights in Manhattan",
+      "Broadway show and Radio City Music Hall Rockettes Holiday Show",
+      "Statue of Liberty, Ellis Island, Rockefeller Center, and One World Observatory",
+    ],
+    links: [{ label: "View full trip details (PDF)", href: nycHolidayTripPdf }],
   },
 ];
 
@@ -91,19 +112,30 @@ function ImageCarousel() {
 
 export default function About() {
   const [whoWeAre, setWhoWeAre] = useState(WHO_WE_ARE_FALLBACK);
+  const [destinations, setDestinations] = useState(UPCOMING_DESTINATIONS);
 
   useEffect(() => {
     const client = getSanityClient();
     if (!client) return;
 
-    const query = `*[_type == "aboutPage"][0]{ "text": whoWeAre }`;
-
     let cancelled = false;
+
     client
-      .fetch(query)
+      .fetch(`*[_type == "aboutPage"][0]{ "text": whoWeAre }`)
       .then((doc) => {
         if (cancelled || !doc?.text || !String(doc.text).trim()) return;
         setWhoWeAre(String(doc.text).trim());
+      })
+      .catch(() => {
+        /* keep fallback */
+      });
+
+    client
+      .fetch(TRIPS_QUERY)
+      .then((docs) => {
+        if (cancelled) return;
+        const trips = mapSanityTrips(docs);
+        if (trips.length > 0) setDestinations(trips);
       })
       .catch(() => {
         /* keep fallback */
@@ -171,17 +203,49 @@ export default function About() {
           </p>
 
           <h3 className="about-subheading">Upcoming Destinations</h3>
-          <ul className="about-list about-travel-destinations">
-            {UPCOMING_DESTINATIONS.map((d) => {
+          <ul className="about-travel-destinations">
+            {destinations.map((d) => {
               const links = (d.links || []).filter(
                 (L) => L.href && String(L.href).trim()
               );
+              const pdfLink = links[0];
               return (
-                <li key={d.name}>
-                  <div className="about-destination-row">
-                    <span className="about-destination-name">{d.name}</span>
+                <li key={d.id || d.name} className="about-destination-card">
+                  {d.preview && (
+                    <a
+                      className="about-destination-preview"
+                      href={pdfLink?.href || d.preview}
+                      aria-label={`View full trip details PDF for ${d.name}`}
+                      {...(pdfLink &&
+                      !String(pdfLink.href).startsWith("mailto:")
+                        ? {
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                          }
+                        : {})}
+                    >
+                      <img
+                        src={d.preview}
+                        alt={d.previewAlt || d.name}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </a>
+                  )}
+                  <div className="about-destination-body">
+                    <h4 className="about-destination-name">{d.name}</h4>
+                    {d.subtitle && (
+                      <p className="about-destination-subtitle">{d.subtitle}</p>
+                    )}
+                    {d.highlights?.length > 0 && (
+                      <ul className="about-list about-destination-highlights">
+                        {d.highlights.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
                     {links.length > 0 && (
-                      <span className="about-destination-links">
+                      <div className="about-destination-links">
                         {links.map((link) => {
                           const isMailto = String(link.href).startsWith(
                             "mailto:"
@@ -201,30 +265,13 @@ export default function About() {
                             </a>
                           );
                         })}
-                      </span>
+                      </div>
                     )}
                   </div>
                 </li>
               );
             })}
           </ul>
-
-          <h3 className="about-subheading">Travel info session</h3>
-          <p>
-            The Friends will be hosting a Premier of both trips at the Seymour
-            Center on <strong>Tuesday, June 2nd at 5:00 p.m.</strong> It is free
-            and open to the public; no registration required.
-          </p>
-          <figure className="about-travel-session-poster">
-            <img
-              src={travelInfoSessionPoster}
-              alt="Travel with Friends of the Seymour Center: Douro Portugal river cruise November 9-17, 2026; NYC holiday December 11-15, 2026; info session Tuesday June 2 at 5:00 p.m."
-              width={1024}
-              height={575}
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
 
           <div className="about-travel-card">
             <h3 className="about-subheading">Seymour Friends Travel Group</h3>
@@ -233,6 +280,10 @@ export default function About() {
               Seymour Center. Join us to learn about upcoming travel
               opportunities and meet potential fellow travelers. We welcome all
               who are interested in traveling with us.
+            </p>
+            <p>
+              The travel info session is free and open to the public; no
+              registration required.
             </p>
             <p>
               The travel group maintains a separate mailing list - reach out to
