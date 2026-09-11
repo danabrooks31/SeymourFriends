@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import './Board.css'
 import { getSanityClient, BOARD_QUERY, mapSanityBoard } from '../lib/sanityClient'
 
+const JACKIE_PODGER = { name: 'Jackie Podger', note: '' }
+
 const BOARD_FALLBACK = {
-  asOf: 'As of August 2026',
+  asOf: 'As of September 2026',
   officers: [
     { role: 'President', name: 'Ceresa Clarke', since: 'Since 2019' },
     { role: 'Vice President', name: 'Ann Wilkerson', since: 'Since 2019' },
@@ -24,7 +26,19 @@ const BOARD_FALLBACK = {
     { name: 'Rosa Gonzales', note: 'Spanish Liaison' },
     { name: 'Fung Little', note: 'Chinese Liaison' },
     { name: 'Rose Ogu', note: '' },
+    JACKIE_PODGER,
   ],
+}
+
+function withJackiePodger(board) {
+  const hasJackie = (board.directors || []).some(
+    (person) => person.name.trim().toLowerCase() === 'jackie podger',
+  )
+  if (hasJackie) return board
+  return {
+    ...board,
+    directors: [...(board.directors || []), JACKIE_PODGER],
+  }
 }
 
 const Board = () => {
@@ -41,10 +55,12 @@ const Board = () => {
         if (cancelled) return
         const mapped = mapSanityBoard(doc)
         if (mapped) {
-          setBoard({
-            ...mapped,
-            asOf: mapped.asOf || BOARD_FALLBACK.asOf,
-          })
+          setBoard(
+            withJackiePodger({
+              ...mapped,
+              asOf: mapped.asOf || BOARD_FALLBACK.asOf,
+            }),
+          )
         }
       })
       .catch(() => {
@@ -102,6 +118,11 @@ const Board = () => {
       )}
 
       {board.asOf && <p className="board-as-of">{board.asOf}</p>}
+
+      <blockquote className="board-thanks">
+        Thank you, with much appreciation for the Friends magnificent new
+        website!
+      </blockquote>
     </main>
   )
 }
