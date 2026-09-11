@@ -118,11 +118,6 @@ const Board = () => {
       )}
 
       {board.asOf && <p className="board-as-of">{board.asOf}</p>}
-
-      <blockquote className="board-thanks">
-        Thank you, with much appreciation for the Friends magnificent new
-        website!
-      </blockquote>
     </main>
   )
 }
