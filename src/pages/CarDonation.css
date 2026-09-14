@@ -3,3 +3,35 @@
   margin-bottom: 40px;
   margin-top: 40px;
 }
+
+.car-donation-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.35rem 0 1rem;
+  padding: 0.75rem 1.25rem;
+  min-height: 2.85rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--color-accent);
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+.car-donation-cta:hover {
+  color: #ffffff;
+  filter: brightness(1.08);
+}
+
+@media (max-width: 40rem) {
+  .donation-header2 h2 {
+    margin: 0.35rem 0 1rem;
+    font-size: 1.2rem;
+    line-height: 1.3;
+  }
+
+  .car-donation-cta {
+    width: 100%;
+  }
+}

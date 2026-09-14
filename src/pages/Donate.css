@@ -34,6 +34,13 @@
   outline-offset: 3px;
 }
 
+@media (max-width: 40rem) {
+  .donate-paypal-link {
+    width: 100%;
+    min-height: 3rem;
+  }
+}
+
 .donate-note {
   margin: 1.25rem 0 0;
   font-size: 0.9rem;

@@ -38,6 +38,16 @@ footer .container-fluid {
   padding: 0;
 }
 
+.footer-content a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-content a:hover {
+  color: #ffffff;
+}
+
 .head {
   padding-bottom: 0.75rem;
   color: #ffffff;

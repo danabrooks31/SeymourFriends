@@ -1,7 +1,3 @@
-main {
-    width: 100%; 
-}
-
 .list1,
 .list2,
 .list3,
@@ -11,20 +7,32 @@ main {
     color: var(--color-accent);
 }
 
-p {
-    color: #000; 
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
+.support-para p {
+    color: var(--color-text);
 }
 
 .donation-content {
-  padding-top: 20px;
+  padding-top: 0.5rem;
+}
+
+.donation-content ol {
+  padding-left: 1.2rem;
 }
 
 .donation-content li {
-  margin-bottom: 25px;
+  margin-bottom: 1.25rem;
+}
+
+.donation-content a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 40rem) {
+  .donation-content ol {
+    padding-left: 1.1rem;
+  }
+
+  .donation-content li {
+    margin-bottom: 1.1rem;
+  }
 }

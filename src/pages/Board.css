@@ -127,3 +127,26 @@
   font-style: italic;
   color: var(--color-text-muted);
 }
+
+@media (max-width: 40rem) {
+  .board-hero {
+    margin: 0 0 1.25rem;
+    padding: 1rem 0.95rem;
+    text-align: left;
+  }
+
+  .board-section--officers,
+  .board-section--directors {
+    padding: 1rem;
+  }
+
+  .board-section {
+    margin-bottom: 1.35rem;
+  }
+
+  .board-directors .board-director-note {
+    display: block;
+    margin: 0.25rem 0 0;
+    margin-left: 0;
+  }
+}

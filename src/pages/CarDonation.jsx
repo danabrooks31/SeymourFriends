@@ -22,13 +22,19 @@ export default function CarDonation() {
         provided to older adults of Orange County. 
       </p>
       <p>
-        You can start the process online by clicking <a href="https://careasy.org/nonprofit/Friends-of-Robert-and-Pearl-Seymour-Center-Inc">here</a> or by calling <b>(844) 750-4483</b>. 
+        You can start the process online or by calling{' '}
+        <a href="tel:+18447504483">(844) 750-4483</a>.
         Our representative is on duty 24/7 to take your call and will schedule a fast, 
         free tow pick-up of your vehicle that’s convenient to you. Once your vehicle 
         is sold, you will be sent a receipt for your tax records, and the sale proceeds 
         will be donated directly to the Seymour Center in your name.
-
       </p>
+      <a
+        className="car-donation-cta"
+        href="https://careasy.org/nonprofit/Friends-of-Robert-and-Pearl-Seymour-Center-Inc"
+      >
+        Donate a vehicle
+      </a>
     </main>
   )
 }

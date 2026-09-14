@@ -79,7 +79,7 @@ export default function Support() {
             Donate your car, truck, SUV, RV, camper, motorcycle, or electric wheelchair as a tax-deductible gift. Title transfers and towing are free.
           </p>
           <p>
-            You can start the process online by clicking <a href="https://careasy.org/nonprofit/Friends-of-Robert-and-Pearl-Seymour-Center-Inc">here</a> or picking up a phone and speaking to a live operator. If you have any questions just call one of our friendly operators toll-free at <b>(844) 750-GIVE </b>or<b> (844) 750-4483</b>.
+            You can start the process online by clicking <a href="https://careasy.org/nonprofit/Friends-of-Robert-and-Pearl-Seymour-Center-Inc">here</a> or picking up a phone and speaking to a live operator. If you have any questions just call one of our friendly operators toll-free at <a href="tel:+18447504483"><b>(844) 750-GIVE</b></a> or <a href="tel:+18447504483"><b>(844) 750-4483</b></a>.
           </p>
         </li>
 
@@ -88,7 +88,7 @@ export default function Support() {
             <h3>Volunteer</h3>
           </div>
           <p>
-            You don’t have to donate money—just your time. The Orange County Connect 55+ Volunteer Program has meaningful volunteer opportunities that work with more than 100 local nonprofit and public agencies. Call <b>(919) 245-4241</b> if you are interested in giving back to the community.
+            You don’t have to donate money—just your time. The Orange County Connect 55+ Volunteer Program has meaningful volunteer opportunities that work with more than 100 local nonprofit and public agencies. Call <a href="tel:+19192454241"><b>(919) 245-4241</b></a> if you are interested in giving back to the community.
 
           </p>
         </li>
