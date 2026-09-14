@@ -7,16 +7,16 @@ function Footer() {
   return (
     <footer> 
         <Container fluid>
-            <Row className = "main-footer">
-                <Col>
-                    <Stack className = "footer-content">
-                        <h1 className = "head">Contact Us</h1>
+            <Row className="main-footer">
+                <Col xs={12} lg={6}>
+                    <Stack className="footer-content">
+                        <h1 className="head">Contact Us</h1>
                         <p><i>Seymourfriends@gmail.com</i></p>
                         <p>2551 Homestead Rd, Chapel Hill, NC 27516</p>
                         <p>(919) 968-2070</p>
                     </Stack>
                 </Col>
-                <Col className = "footer-map">
+                <Col xs={12} lg={6} className="footer-map">
                     <MapFooter />
                 </Col>
             </Row>
